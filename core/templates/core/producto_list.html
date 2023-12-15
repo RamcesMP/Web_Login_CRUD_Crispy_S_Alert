@@ -1,0 +1,43 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+<h1>Hola Mundo</h1>
+<br><br>
+<a href="{% url 'agregar' %}" class="btn btn-primary">Agregar</a> <br><br>
+
+<div class=" center-block ">
+    <table class="table  ">
+        <tr><td></td>
+        <td></td>
+        <td></td>
+            <td><strong>Nombre</strong> </td>
+            <td><strong>Precio</strong> </td>
+            <td><strong>Marca</strong> </td>
+            <td><strong> Acciones</strong></td>
+        </tr>
+        {% for producto in producto_list %}
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.precio}}</td>
+            <td>{{producto.marca}}</td>
+            <td>
+            <a href="{% url 'ver' producto.id %}" class="btn btn-success ">Mostrar</a>  
+            <a href="{% url 'editar' producto.id %}" class="btn btn-secondary"> Editar </a> 
+            <a href="{% url 'eliminar' producto.id %}" class="btn btn-danger">Borrar</a>
+            </td>
+        </tr>
+    
+        {% endfor %}
+    </table>
+    <br>
+    {% include 'core/paginator.html'%}
+</div>
+
+
+
+  
+
+{% endblock %}
